@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="index.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<script src="therapist.js"></script> 
+<script src="client.js"></script> 
+<script src="session.js"></script> 
+<script>
+</script>
+<body>
+    <div id="head">
+            <b>Client-Therapist Session Management System</b><br>
+            By Zhu Huang 20322253
+    </div>
+    <div id="form"><!-- div containing insert, update ,select,and delete section -->
+        <div id="therapist">
+            <h2>Therapist Data</h2>
+            <button id="AllTherapist"class="getAll">Get All Therapist</button><br>
+            <form>
+            <input type="reset"value="Reset Form"><br>   
+            <label>Title*:</label><br>
+            <select id="Title" name="Title"onchange='checkTPTitlevalue(this.value)'>
+                <option value="Mx">Mx</option>
+                <option value="Mr">Mr</option>
+                <option value="Ms">Ms</option>
+                <option value="Mrs">Mrs</option>
+                <option value="Miss">Miss</option>
+                <option value="Dr">Dr</option>
+                <option value="Other">Other</option>
+            </select><br>
+            <input type="text" id="TPTitle" name="TPTitle" value=""style='display:none'>
+            <label>First name*:</label><br>
+            <input type="text" id="FirstName" name="FirstName" value=""><br>
+            <label>Last name*:</label><br>
+            <input type="text" id="LastName" name="LastName" value=""><br>
+            <label>Mobile*:</label><br>
+            <input type="text" id="Mobile" name="Mobile" value=""><br>
+            <label>Email*:</label><br>
+            <input type="text" id="Email" name="Email" value=""><br>
+            <label>Address*:</label><br>
+            <input type="text" id="Address" name="Address" value=""><br>
+            <label>Address2:</label><br>
+            <input type="text" id="Address2" name="Address2" value=""><br>
+            <label>City*:</label><br>
+            <input type="text" id="City" name="City" value=""><br>
+            <label>Town*:</label><br>
+            <input type="text" id="Town" name="Town" value=""><br>
+            <label>Eircode:</label><br>
+            <input type="text" id="Eircode" name="Eircode" value=""><br>
+            </form>
+            <button id="postTherapist">Insert Data</button><br><br>
+            <label>Therapist ID:</label><br>
+            <input type="text" id="TherapistId" name="TherapistId" placeholder="e.g.627aa89af462efc64d7af2c8" value=""><br>
+            <button id="patchTherapist">Update Therapist</button><br>
+            <button id="getTherapistId">Search Therapist</button><br>
+            <button id="deleteTherapist">Delete Therapist</button><br>
+        </div>
+        <div id="client">
+            <h2>Client Data</h2>
+            <button id="AllClient"class="getAll">Get All Client</button><br>
+            <form>
+            <input type="reset"value="Reset Form"><br>  
+            <label>Title*:</label><br>
+            <select id="CLTitle1" name="CLTitle1"onchange='checkCLTitlevalue(this.value)'>
+                <option value="Mx">Mx</option>
+                <option value="Mr">Mr</option>
+                <option value="Ms">Ms</option>
+                <option value="Mrs">Mrs</option>
+                <option value="Miss">Miss</option>
+                <option value="Dr">Dr</option>
+                <option value="Other">Other</option>
+            </select><br>
+            <input type="text" id="CLTitle" name="CLTitle" value=""style='display:none'>
+            <label>Gender*:</label><br>
+            <select id="Gender" name="Gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select><br>
+            <label>First name*:</label><br>
+            <input type="text" id="CLFirstName" name="CLFirstName" value=""><br>
+            <label>Last name*:</label><br>
+            <input type="text" id="CLLastName" name="CLLastName" value=""><br>
+            <label>DOB*:</label><br>
+            <input type="date" id="DOB" name="DOB" value=""><br>
+            <label>Parent/Guardian Name<br> if under 18:</label><br>
+            <input type="text" id="U18" name="U18" value=""><br>
+            <label>Marital Status*:</label><br>
+            <select id="MS" name="MS">
+                <option value="Never Married">Never Married</option>
+                <option value="Domestic Partnership">Domestic Partnership</option>
+                <option value="Married">Married</option>
+                <option value="Seprated">Seprated</option>
+                <option value="Divorced">Divorced</option>
+                <option value="Widowed">Widowed</option>
+            </select><br>
+            <label>Mobile*:</label><br>
+            <input type="text" id="CLMobile" name="CLMobile" value=""><br>
+            <label>Email*:</label><br>
+            <input type="text" id="CLEmail" name="CLEmail" value=""><br>
+            <label>Permission to leave <br>message by phone or Email*:</label><br>
+            <select id="Permission" name="Permission">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select><br>
+            <label>Address*:</label><br>
+            <input type="text" id="CLAddress" name="CLAddress" value=""><br>
+            <label>Address2:</label><br>
+            <input type="text" id="CLAddress2" name="CLAddress2" value=""><br>
+            <label>City*:</label><br>
+            <input type="text" id="CLCity" name="CLCity" value=""><br>
+            <label>Town*:</label><br>
+            <input type="text" id="CLTown" name="CLTown" value=""><br>
+            <label>Eircode:</label><br>
+            <input type="text" id="CLEircode" name="CLEircode" value=""><br>
+            <label>Referrer:</label><br>
+            <input type="text" id="Referrer" name="Referrer" value=""><br>
+            </form>
+            <button id="postClient">Insert Data</button><br><br>
+            <label>Client ID:</label><br>
+            <input type="text" id="ClientId" name="ClientId" placeholder="e.g.627abd6d07bd58df6faa45d7"value=""><br>
+            <button id="patchClient">Update Client</button><br>
+            <button id="getClientId">Search Client</button><br>
+            <button id="deleteClient">Delete Client</button><br>
+            
+        </div>
+        <div id="session">
+            <h2>Session Data</h2>
+            <button id="AllSession"class="getAll">Get All Session</button><br>
+            <form>
+            <input type="reset" value="Reset Form"><br>
+            <label>Client1 ID*:</label><br>
+            <input type="text" id="Client1" name="Client1" placeholder="e.g.627abd6d07bd58df6faa45d7"value="" required><br>
+            <label>Client2 ID:</label><br>
+            <input type="text" id="Client2" name="Client2" value=""><br>
+            <label>Client3 ID:</label><br>
+            <input type="text" id="Client3" name="Client3" value=""><br>
+            <label>Therapist ID*:</label><br>
+            <input type="text" id="Therapist" name="Therapist" placeholder="e.g.627aa89af462efc64d7af2c8"value=""><br>
+            <label>SessionDate*:</label><br>
+            <input type="date" id="SessionDate" name="SessionDate" value=""><br>
+            <label>SessionTime(Mins)*:</label><br>
+            <input type="number" id="SessionTime" name="SessionTime" value=""><br>
+            <label>Fee*:</label><br>
+            <input type="number" id="Fee" name="Fee" value=""><br>
+            <label>Session Number*:</label><br>
+            <input type="number" id="Number" name="Number" value=""><br>
+            <label>Attendance*:</label><br>
+            <select id="Attendance" name="Attendance">
+                <option value="Attended">Attended</option>
+                <option value="Cancelled">Cancelled</option>
+                <option value="No Show">No Show</option>
+            </select><br>
+            <label>Type*:</label><br>
+            <select id="Type" name="Type"onchange='checkTypevalue(this.value)'>
+                <option value="Intake">Intake</option>
+                <option value="Psychotherapy">Psychotherapy</option>
+                <option value="Assessment">Assessment</option>
+                <option value="Other">Other</option>
+            </select><br>
+            <input type="text" id="TypeOther" name="TypeOther" value=""style='display:none'>
+            <label>Note*:</label><br>
+            <input type="text" id="Note" name="Note" value=""><br>
+            </form>
+            <button id="postSession">Insert Data</button><br><br>
+            <label>Session ID:</label><br>
+            <input type="text" id="SessionId" name="SessionId" placeholder="e.g.627ae15f07bd58df6faa45fe"value=""><br>
+            <button id="patchSession">Update Session</button><br>
+            <button id="getSessionId">Search Session</button><br>
+            <button id="deleteSession">Delete Session</button><br>
+            
+    
+</body>
+</html>
