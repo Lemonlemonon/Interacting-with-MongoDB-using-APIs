@@ -11,7 +11,7 @@ const therapistRoutes = require("./api/routes/therapists");
 //Connect to MongoDB
 //Connect to MongoDB
 mongoose.connect(
-  "mongodb+srv://dbUser:pwd@cluster0.jeb7c.mongodb.net/ClientTherapist?retryWrites=true&w=majority"
+  "mongodb+srv://dbUser:xxxxxxxxxxxxx/ClientTherapist?retryWrites=true&w=majority"//Your MongoDB Key
 );
 
 app.use(morgan("dev"));
